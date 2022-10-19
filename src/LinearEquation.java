@@ -39,22 +39,18 @@ public class LinearEquation {
     public String equation() {
         int num = y2 - y1;
         int den = x2 - x1;
-        boolean negY = false;
+        boolean negY;
+        boolean origin;
 
-        if (yIntercept() == Math.abs(yIntercept()))  {
+        if (yIntercept() == 0) {
+            origin = true;
+            negY = false;
+        } else if (yIntercept() == Math.abs(yIntercept())) {
+            negY = false;
+            origin = false;
+        } else {
             negY = true;
-        }
-
-        if (x1 == x2) {
-            return "undefined";
-        }
-
-        if (num < 0 && den < 0) {
-            return "y = " + num + "/" + den + " + " + yIntercept();
-        }
-
-        if (num > 0 && den < 0) {
-            return "y = -" + num + "/" + Math.abs(den) + " + " + yIntercept();
+            origin = false;
         }
     }
 
