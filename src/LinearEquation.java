@@ -9,7 +9,7 @@ public class LinearEquation {
     public LinearEquation(int x1, int y1, int x2, int y2) {
         this.x1 = x1;
         this.x2 = x2;
-        this.y1 = y2;
+        this.y1 = y1;
         this.y2 = y2;
     }
 
@@ -23,8 +23,8 @@ public class LinearEquation {
 
     // method that returns slope [will be rounded to hundredth]
     public double slope() {
-        double num = (double) y2 - y1;
-        double den = (double) x2 - x1;
+        double num = y2 - y1;
+        double den = x2 - x1;
         return roundedToHundredth(num/den);
     }
 
@@ -62,10 +62,12 @@ public class LinearEquation {
         }
 
         if (num < 0 && den < 0) {
-            slope = Math.abs(num) + "/" + Math.abs(den) + "x";
+            slope = (-1 * num) + "/" + (-1 * den) + "x";
         } else if (num > 0 && den < 0) {
-            slope = "-" + num + "/" + Math.abs(den) + "x";
+            slope = "-" + num + "/" + (-1 * den) + "x";
         } else if (num < 0 && den > 0) {
+            slope = num + "/" + den + "x";
+        } else if (num > 0 && den > 0) {
             slope = num + "/" + den + "x";
         } else if (((double) num/den) == -1) {
             slope = "-x";
