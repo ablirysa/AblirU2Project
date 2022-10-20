@@ -29,5 +29,13 @@ public class LinearEquationRunner {
         // creating an obj
         LinearEquation cords = new LinearEquation(x1, y1, x2, y2);
 
+        // printing out the info
+        System.out.println(cords.lineInfo());
+
+        // point on the line
+        System.out.print("Enter a value for x: ");
+        double xVal = scan.nextDouble();
+        System.out.println();
+        System.out.println("The point on the line is " + cords.coordinateForX(xVal));
     }
 }
