@@ -22,7 +22,9 @@ public class LinearEquationRunner {
         LinearEquation cords = new LinearEquation(x1, y1, x2, y2);
 
         // printing out the info
+        System.out.println();
         System.out.println(cords.lineInfo());
+        System.out.println();
 
         // point on the line
         System.out.print("Enter a value for x: ");

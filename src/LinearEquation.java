@@ -43,27 +43,27 @@ public class LinearEquation {
         boolean negY;
         boolean origin;
 
-        if (yIntercept() == 0) {
+        if (yIntercept() == 0) { // to check if it passes through origin
             origin = true;
             negY = false;
-        } else if (yIntercept() == Math.abs(yIntercept())) {
+        } else if (yIntercept() == Math.abs(yIntercept())) { // to check if it is a positive y-intercept
             negY = false;
             origin = false;
-        } else {
+        } else { // if it gets to this point, it is a negative y-intercept
             negY = true;
             origin = false;
         }
 
-        if (x1 == x2) {
+        if (x1 == x2) { // for vertical lines
             return "undefined";
         }
-        if (y1 == y2) {
+        if (y1 == y2) { // for horizontal lines
             return "y = " + yIntercept();
         }
 
-        if (num < 0 && den < 0) {
+        if (num < 0 && den < 0) { // to get rid of the "-" on both
             slope = (-1 * num) + "/" + (-1 * den) + "x";
-        } else if (num > 0 && den < 0) {
+        } else if (num > 0 && den < 0) { // to get rid of the "-" on the denominator and move it to the numerator
             slope = "-" + num + "/" + (-1 * den) + "x";
         } else if (num < 0 && den > 0) {
             slope = num + "/" + den + "x";
@@ -87,7 +87,7 @@ public class LinearEquation {
     // method that returns the coordinate value at certain x
     public String coordinateForX(double xValue) {
         double part1 = slope() * xValue + yIntercept();
-        return "(" + part1 + ", " + xValue + ")";
+        return "(" + xValue + ", " + part1 + ")";
     }
 
     // "helper" method that rounds to the nearest hundredth
