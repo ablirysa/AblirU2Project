@@ -39,7 +39,7 @@ public class LinearEquation {
     public String equation() {
         int num = y2 - y1;
         int den = x2 - x1;
-        String slope;
+        String slope = "";
         boolean negY;
         boolean origin;
 
@@ -55,28 +55,32 @@ public class LinearEquation {
         }
 
         if (x1 == x2) { // for vertical lines
-            return "undefined";
+            return "x = " + x1;
         }
         if (y1 == y2) { // for horizontal lines
-            return "y = " + yIntercept();
+            return "y = " + (int) yIntercept();
         }
 
-        if (num < 0 && den < 0) { // to get rid of the "-" on both
-            slope = (-1 * num) + "/" + (-1 * den) + "x";
-        } else if (num > 0 && den < 0) { // to get rid of the "-" on the denominator and move it to the numerator
-            slope = "-" + num + "/" + (-1 * den) + "x";
-        } else if (num < 0 && den > 0) {
-            slope = num + "/" + den + "x";
-        } else if (num > 0 && den > 0) {
-            slope = num + "/" + den + "x";
-        } else if (((double) num/den) == -1) {
+        if (((double) num/den) == -1) {
             slope = "-x";
-        } else {
+        } else if (num/den == 1) {
             slope = "x";
+        } else  if (num % den == 0) {
+            slope = num/den + "x";
+        } else if (num % den != 0) {
+            if (num < 0 && den < 0) { // to get rid of the "-" on both
+                slope = (-1 * num) + "/" + (-1 * den) + "x";
+            } else if (num > 0 && den < 0) { // to get rid of the "-" on the denominator and move it to the numerator
+                slope = "-" + num + "/" + (-1 * den) + "x";
+            } else if (num < 0 && den > 0) {
+                slope = num + "/" + den + "x";
+            } else if (num > 0 && den > 0) {
+                slope = num + "/" + den + "x";
+            }
         }
 
         if (negY) {
-            return "y = " + slope + "-" + Math.abs(yIntercept());
+            return "y = " + slope + " - " + Math.abs(yIntercept());
         } else if (origin) {
             return "y = " + slope;
         } else {
@@ -99,10 +103,16 @@ public class LinearEquation {
     // returns a string that includes all info
     public String lineInfo() {
         String str = "The two points are: (" + x1 + ", " + y1 + ") and (" + x2 + ", " +  y2 + ")";
-        str += "\nThe equation of the line between the points is: " + equation();
-        str += "\nThe slope of this line is: " + slope();
-        str += "\nThe y-intercept of the line is: " + yIntercept();
-        str += "\nThe distance between the two points is: " + distance();
+        if (equation().indexOf("x =") != -1) {
+            str += "\nThese points are on a vertical line: " + equation();
+        } else if (equation().indexOf("x") == -1) {
+            str += "\nThese points are on a horizontal line: " + equation();
+        } else {
+            str += "\nThe equation of the line between the points is: " + equation();
+            str += "\nThe slope of this line is: " + slope();
+            str += "\nThe y-intercept of the line is: " + yIntercept();
+            str += "\nThe distance between the two points is: " + distance();
+        }
         return str;
     }
 }

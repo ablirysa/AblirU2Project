@@ -24,12 +24,14 @@ public class LinearEquationRunner {
         // printing out the info
         System.out.println();
         System.out.println(cords.lineInfo());
-        System.out.println();
 
         // point on the line
-        System.out.print("Enter a value for x: ");
-        double xVal = scan.nextDouble();
-        System.out.println();
-        System.out.println("The point on the line is " + cords.coordinateForX(xVal));
+        if (cords.equation().indexOf("x =") == -1) {
+            System.out.println();
+            System.out.print("Enter a value for x: ");
+            double xVal = scan.nextDouble();
+            System.out.println();
+            System.out.println("The point on the line is " + cords.coordinateForX(xVal));
+        }
     }
 }
