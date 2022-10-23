@@ -54,9 +54,6 @@ public class LinearEquation {
             origin = false;
         }
 
-        if (x1 == x2) { // for vertical lines
-            return "x = " + x1;
-        }
         if (y1 == y2) { // for horizontal lines
             return "y = " + (int) yIntercept();
         }
@@ -103,9 +100,7 @@ public class LinearEquation {
     // returns a string that includes all info
     public String lineInfo() {
         String str = "The two points are: (" + x1 + ", " + y1 + ") and (" + x2 + ", " +  y2 + ")";
-        if (equation().indexOf("x =") != -1) {
-            str += "\nThese points are on a vertical line: " + equation();
-        } else if (equation().indexOf("x") == -1) {
+        if (equation().indexOf("x") == -1) {
             str += "\nThese points are on a horizontal line: " + equation();
         } else {
             str += "\nThe equation of the line between the points is: " + equation();
