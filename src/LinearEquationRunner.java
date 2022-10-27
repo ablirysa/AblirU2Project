@@ -4,7 +4,7 @@ public class LinearEquationRunner {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
 
-        System.out.println("Welcome!");
+        start();
 
         // coordinate 1
         System.out.print("Enter Coordinate 1: ");
@@ -36,5 +36,9 @@ public class LinearEquationRunner {
             System.out.println();
             System.out.println("The equation of this line is: x = " + x1);
         }
+    }
+
+    public static void start() {
+        System.out.println("Welcome!");
     }
 }
